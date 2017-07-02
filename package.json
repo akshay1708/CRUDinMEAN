@@ -1,0 +1,8 @@
+{
+  "name": "starter-node-angular",
+  "main": "server.js",
+  "dependencies": {
+    "cors": "^2.8.3",
+    "express": "~4.5.1"
+  }
+}

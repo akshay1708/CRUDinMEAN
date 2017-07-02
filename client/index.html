@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="postfeed">
+  <head>
+    <meta charset="utf-8">
+    <!-- Latest compiled and minified CSS -->
+    <title>CRUD in MEAN</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js">  </script>
+    <script>
+      angular.module("postfeed",[]);
+    </script>
+    <script src="controllers/postFeed.js">//including controller</script>
+
+
+  </head>
+
+  <body ng-controller="postCtrl" ng-cloak>
+    <div class="navbar navbar-inverse">
+        <a class="navbar-brand" href="#">PostNow</a>
+        <form class="" action="api/posts">
+          <button type="submit" class="btn btn-primary">show API</button>
+
+        </form>
+
+    </div>
+
+    <div class="col-md-8 col-md-offset-2">
+      <form name="postForm" id="posting"  class="form-group" >
+      <input class="form-control" type="text" placeholder="heading" name="someelse" required ng-model="postForm.postHead"><br>
+      <!--input type="text" placeholder="content" name="some" required ng-model="postForm.postContent" -->
+      <textarea class="form-control"type="text" placeholder="content" name="some" form="posting" required ng-model="postForm.postContent" ></textarea>
+<br>
+      <button type="submit" class="btn btn-primary" ng-click="addpost()">Submit</button>
+      </form>
+            <div ng-repeat="item in data.posts | orderBy:'-'"
+       class=" ">
+               <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{item.heading}}
+<button type="submit" class="btn btn-primary pull-right" ng-click="deletepost(item._id)">Delete</button>
+            </h3>
+
+            </div>
+                  <div class="panel-body">
+                      {{item.content}}   </div>
+            </div>
+            </div>
+          </div>
+   </body>
+
+
+  </html>
